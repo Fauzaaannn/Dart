@@ -1,8 +1,7 @@
 import 'dart:io';
 import 'dart:async';
 
-void main(List<String> args) 
-{
+void main(List<String> args) {
   Directory dir = Directory.current;
   print(dir.path);
 
@@ -13,8 +12,7 @@ void main(List<String> args)
   deleteFile(file);
 }
 
-void writeFile(File file)
-{
+void writeFile(File file) {
   // Append, Write
   RandomAccessFile raf = file.openSync(mode: FileMode.write);
   raf.writeStringSync('Hello World!');
@@ -22,10 +20,8 @@ void writeFile(File file)
   raf.closeSync();
 }
 
-void readFile(File file)
-{
-  if(!file.existsSync())
-  {
+void readFile(File file) {
+  if (!file.existsSync()) {
     print('file not found');
     return;
   }
@@ -35,19 +31,15 @@ void readFile(File file)
 
   print('Reading Bytes...');
   List values = file.readAsBytesSync();
-  values.forEach((value) => print(value)); 
+  values.forEach((value) => print(value));
 }
 
-Future<void> deleteFile(File file) async 
-{
-  if(file.existsSync())
-  {
+Future<void> deleteFile(File file) async {
+  if (file.existsSync()) {
     await Future.delayed(Duration(seconds: 10));
     print('Deleting File...');
     file.deleteSync();
-  }
-  else
-  {
+  } else {
     print('file not found');
   }
 }
