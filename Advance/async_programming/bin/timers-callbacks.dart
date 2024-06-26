@@ -1,9 +1,8 @@
 import 'dart:async';
 
 int counter = 0;
-// synchronous callbacks
-void main(List<String> args) 
-{
+// asynchronous callbacks
+void main(List<String> args) {
   Duration duration = new Duration(seconds: 1);
   Timer timer = new Timer.periodic(duration, timeout);
   print(timer);
@@ -15,11 +14,10 @@ void timeout(Timer timer) // even functions are object
   print('Timeout: ${getTime()}');
 
   counter++;
-  if(counter >= 5) timer.cancel();
+  if (counter >= 5) timer.cancel();
 }
 
-String getTime()
-{
+String getTime() {
   DateTime dt = new DateTime.now();
   return dt.toString();
 }
