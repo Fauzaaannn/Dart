@@ -1,8 +1,7 @@
 import 'dart:io';
 import 'dart:async';
 
-void main(List<String> args) 
-{
+void main(List<String> args) {
   String path = Directory.current.path + "/test.txt";
   print('Appending to ${path}');
 
@@ -13,10 +12,13 @@ void main(List<String> args)
   f.then((RandomAccessFile raf) {
     print('File has been opened!');
 
-    raf.writeString('Hello World').then((value) {
-      print('file has been appended');
-
-    }).catchError(() => print('An error occurred')).whenComplete(() => raf.close());
+    raf
+        .writeString('Hello World')
+        .then((value) {
+          print('file has been appended');
+        })
+        .catchError(() => print('An error occurred'))
+        .whenComplete(() => raf.close());
   });
 
   print('**** The End');
