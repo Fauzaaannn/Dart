@@ -12,13 +12,12 @@ void main(List<String> args) {
   f.then((RandomAccessFile raf) {
     print('File has been opened!');
 
-    raf
-        .writeString('Hello World')
-        .then((value) {
-          print('file has been appended');
-        })
-        .catchError(() => print('An error occurred'))
-        .whenComplete(() => raf.close());
+    raf.writeString('Hello World').then((value) {
+      print('file has been appended');
+    }).catchError((error) {
+      print('An error occurred: $error');
+      return null; // Return null to satisfy FutureOr<Null> requirement
+    }).whenComplete(() => raf.close());
   });
 
   print('**** The End');
