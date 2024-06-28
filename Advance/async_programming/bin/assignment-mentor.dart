@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:async';
 
 main(List<String> arguments) async {
-
   print('Starting');
   File file = await appendFile();
   print('Appended to ${file.path}');
@@ -22,4 +21,3 @@ Future<String> readFile() {
 
   return file.readAsString();
 }
-
