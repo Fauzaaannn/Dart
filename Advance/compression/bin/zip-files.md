@@ -209,6 +209,14 @@ Dengan demikian, `ZipEncoder` bertindak sebagai "pengompresi" yang mengonversi
 
 # Loop unzip
 
+```dart
+archive.forEach((ArchiveFile archiveFile ) {
+    File file = new File(path + '/' + archiveFile.name);
+    file.createSync(recursive: true);
+    file.writeAsBytesSync(archiveFile.content);
+  });
+```
+
 Program tersebut merupakan bagian dari fungsi `unzip` yang bertujuan untuk mengekstrak file-file dari sebuah file zip ke dalam sebuah direktori tujuan.
 
 Berikut penjelasan untuk setiap baris kode:
