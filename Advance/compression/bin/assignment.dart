@@ -27,3 +27,14 @@ void main(List<String> args)
   8. The decompressed data, which is a list of bytes, is converted back to a string using utf8.decode().
   9. Finally, the decompressed string is printed to the console using print().
 */
+
+/* 
+  The important data transformations happening in this code are:
+
+  1. Converting the string 'Hello World' to a list of bytes using utf8.encode().
+  2. Compressing the list of bytes using the GZIP algorithm with gzip.encode().
+  3. Writing the compressed data to a file.
+  4. Reading the compressed data from the file.
+  5. Decompressing the compressed data using gzip.decode().
+  6. Converting the decompressed data (a list of bytes) back to a string using utf8.decode().
+*/
