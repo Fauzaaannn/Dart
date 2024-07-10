@@ -5,16 +5,16 @@ void main(List<String> args)
 {
   var data = 'Hello World';
 
-  List<int> dataToSend = utf8.encode(data);
-  int port = 3000;
+  List<int> dataToSend = utf8.encode(data); // necessary for sending data over the network.
+  int port = 3000; // port number
 
   // Server
   RawDatagramSocket.bind(InternetAddress.loopbackIPv4, port).then((RawDatagramSocket udpSocket) {
     udpSocket.listen((RawSocketEvent event) {
       if (event == RawSocketEvent.read) {
-        Datagram? dg = udpSocket.receive();
+        Datagram? dg = udpSocket.receive(); // read the data
         if (dg != null) {
-          print(utf8.decode(dg.data));
+          print(utf8.decode(dg.data)); // decode it to string
         }
       }
     });
@@ -22,6 +22,9 @@ void main(List<String> args)
     // Client
     udpSocket.send(dataToSend, InternetAddress.loopbackIPv4, port);
     print('Sent');
+
+    // The client is created by sending the encoded data using the udpSocket.send function, which takes the data to be sent, 
+    // the IP address of the recipient (in this case, the loopback IP address), and the port number.
   });
 }
 
@@ -48,4 +51,9 @@ void main(List<String> args)
 
   The client however (// Client) is just sending a datagram to the server (udpSocket.send), there is no connection either because
   this is all UDP and it's just going to throw it out onto the network and see what happens.
+*/
+
+/*
+  The output of the code is the message "Sent" printed to the console by the client, 
+  and the received message "Hello World" printed to the console by the server.
 */
